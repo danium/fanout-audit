@@ -121,10 +121,12 @@ failing grade on a post whose only problem is where its sentences start.
 
 ## Background
 
-The two mechanisms this skill checks are the ones disclosed in the Google antitrust record
-that can be verified against your own content offline: that AI Mode decomposes a question
-into subtopics and issues many queries at once, and that FastSearch retrieves a smaller
-candidate set than Search, favouring text that stands alone.
+This skill accompanies [an article by Daniil Sokolov](https://x.com/daniilsokolov/status/2088613085162483785).
+
+The two mechanisms it checks are the ones disclosed in the Google antitrust record that can
+be verified against your own content offline: that AI Mode decomposes a question into
+subtopics and issues many queries at once, and that FastSearch retrieves a smaller candidate
+set than Search, favouring text that stands alone.
 
 Everything beyond those two facts — how the decomposition works, how chunks are scored, how
 many sub-queries are issued — is undisclosed. The skill is built to be useful without
