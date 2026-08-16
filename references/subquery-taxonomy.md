@@ -40,15 +40,19 @@ the content substantiates the claim — that is the finding, and findings belong
 | Recency | Would a reader need to check the subject's *current* state — a version, status, price, or ongoing situation? |
 | Verification | Does the subject, or an assertion the page makes, involve a **dated or datable event** whose occurrence a reader might doubt? |
 
-**Two guardrails, both stops rather than findings.** If three or fewer gates open, do not
+**Two guardrails, both stops rather than findings.** If **two or fewer** gates open, do not
 report: state which gates opened and ask whether the head query should be broader. The cause
 is a head query that is too narrow, not thin content. If **all nine** gates open, do not
 report: return to the head-query step and ask, because a subject opening every single gate is
 usually more than one head query.
 
-The high threshold is deliberately all-or-nothing. A thorough product page legitimately opens
-seven of nine, so any lower ceiling stops audits that should have run — and a stopped audit
-reports no gaps at all, which is worse than a slightly wide one.
+Both thresholds are deliberately at the extremes, because a stopped audit reports no gaps at
+all — which is worse than one that runs slightly wide or slightly narrow.
+
+Three open gates is a normal audit, not a starved one. A dated event typically opens only
+Definitional, Verification, and Recency, and those three yield plenty of sub-queries between
+them — what happened, who reported it, is it confirmed, what is the current status. Gates are
+not counted 1:1 against the six-to-twelve range.
 
 ---
 

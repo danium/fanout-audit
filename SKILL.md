@@ -94,8 +94,10 @@ yield more than one sub-query, so gates are not counted against the six-to-twelv
 
 **Two stops before you report:**
 
-- **Three or fewer gates open** → do not report. State which gates opened and ask whether the
+- **Two or fewer gates open** → do not report. State which gates opened and ask whether the
   head query should be broader. The cause is a head query that is too narrow, not thin content.
+  Three gates is a normal audit — a dated event opens Definitional, Verification, and Recency,
+  and those yield plenty of sub-queries between them.
 - **All nine gates open** → do not report. Return to step 2 and ask, because a subject that opens
   every single gate is usually more than one head query. A thorough product page legitimately
   opens seven of nine, so the threshold is all-or-nothing on purpose.
