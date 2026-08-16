@@ -99,8 +99,9 @@ yield more than one sub-query, so gates are not counted against the six-to-twelv
   Three gates is a normal audit — a dated event opens Definitional, Verification, and Recency,
   and those yield plenty of sub-queries between them.
 - **All nine gates open** → do not report. Return to step 2 and ask, because a subject that opens
-  every single gate is usually more than one head query. A thorough product page legitimately
-  opens seven of nine, so the threshold is all-or-nothing on purpose.
+  every single gate is usually more than one head query. The threshold is all-or-nothing on
+  purpose: a rich subject can legitimately open seven or eight, and a stopped audit reports no
+  gaps at all.
 
 Both are stops, like step 2. Neither is a section in the report — the output contract permits
 three finding sections and nothing else.

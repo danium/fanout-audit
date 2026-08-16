@@ -120,7 +120,7 @@ Wording for the reference file, verbatim:
 > the content does not cover it.** If a gate opens and the content says nothing, that is an
 > ABSENT finding — which is the point of the audit.
 
-## The twelve classes
+## The classes — nine shipped, three struck
 
 | Class | Gate question | Status |
 |---|---|---|
@@ -132,7 +132,7 @@ Wording for the reference file, verbatim:
 | Evidence | Does the subject, **or a claim the page makes about it**, invite "does that actually work?" | existing |
 | Procedural | Is the subject something a reader would execute or set up? | existing |
 | Recency | Would a reader need to check the subject's *current* state — a version, status, price, or ongoing situation? | **new** |
-| Verification | Does the subject, **or an assertion the page makes**, involve an event a reader might doubt occurred? | **new** |
+| Verification | Does the subject, **or an assertion the page makes**, involve a **dated or datable event** whose occurrence a reader might doubt? | **new** |
 | ~~Affiliation~~ | ~~Is the subject a named person, organisation, or place?~~ | **dropped — RED** |
 | ~~Locality~~ | ~~Does the subject's availability or applicability vary by geography or jurisdiction?~~ | **dropped — RED** |
 | ~~Diagnostic~~ | ~~Can the subject itself fail or go wrong in ways a reader would search for?~~ | **dropped — RED** |
@@ -212,10 +212,10 @@ Step 3 gains two guardrails. Both are **pre-report stops**, not report content �
 contract permits three finding sections and nothing else, and neither guardrail gets a slot in
 it. Both mirror the existing step 2 stop-and-ask.
 
-- **Eight or nine gates open** → do not report. Nearly every gate opening usually means the
+- **All nine gates open** → do not report. Nearly every gate opening usually means the
   subject is broader than one head query. Return to step 2 and ask. (Scaled from eleven-or-twelve
   when the class count dropped to nine.)
-- **Three or fewer gates open** → do not report. State which gates opened and ask whether the
+- **Two or fewer gates open** → do not report. State which gates opened and ask whether the
   head query should be broader. **The cause is a head query that is too narrow, not thin
   content** — gates do not inspect whether the content is thin, and phrasing this as a content
   judgment would contradict the polarity rule.
@@ -227,12 +227,12 @@ the reference, and that stays true.
 
 - "Applies when" column becomes the gate question
 - The polarity rule stated verbatim near the top
-- Five new class sections, each with the gate, two or three example sub-queries, and a worked
+- Two new class sections (Recency, Verification), each with the gate, two or three example sub-queries, and a worked
   example of the gate **closed** — closed by the nature of the subject, never by content
   absence
 - Definitional's existing "skip when" guidance is preserved and becomes its gate
 - The two existing worked decompositions gain a line recording which gates opened
-- Two new worked decompositions covering subjects that trip the new gates
+- Worked decompositions annotated with the gates they open
 - Approximately 990 → 1,700 words
 
 ### `references/passage-criteria.md` — one extension
@@ -258,7 +258,7 @@ Unchanged except where marked:
 
 1. Read the content
 2. Infer the head query; stop and ask if more than one
-3. **Open gates → stop and ask if 3 or fewer, or 11 or more → generate six to twelve
+3. **Open gates → stop and ask if 2 or fewer, or all 9 → generate six to twelve
    sub-queries from open classes only**
 4. Classify each against the standalone test: covered, not extractable, absent
 5. Report
@@ -403,9 +403,9 @@ so `docs/superpowers/specs/` lands in every user's skills folder.
 
 ## Done when
 
-- All twelve gates phrased per the polarity rule, with both clauses stated verbatim in the
+- All nine gates phrased per the polarity rule, with both clauses stated verbatim in the
   reference file
-- All twelve gates documented with a worked open and closed example, where the closed example
+- All nine gates documented with a worked open and closed example, where the closed example
   is closed by the nature of the subject and never by content absence — including Definitional,
   which is now conditional
 - RED failures recorded verbatim for each proposed class across 3 reps, or the class dropped on

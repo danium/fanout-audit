@@ -1,9 +1,29 @@
 # RED baseline — v1 (seven classes) against the four new content types
 
-9 of 12 reps completed. All four fixtures covered; news and support have the full 3 reps,
-entity has 2, availability has 1. The remaining 3 were killed when the dispatch mechanism
-ran away (see ledger). Rep counts are noted per class below, because the KEEP/DROP rule
-requires a majority of three.
+11 reps completed across the four fixtures: news 3, support 3, availability 3, entity 2.
+Rep counts are noted per class below, because the KEEP/DROP rule requires a majority of three.
+
+## Evidence provenance — read this before trusting a verdict
+
+The dispatch mechanism failed partway through this task (see ledger). A runner agent silently
+dropped the write-to-file instruction from the prompts it passed on, so most reps returned
+their audits as text rather than writing artifacts. Consequence:
+
+| Fixture | Reps | Committed artifacts in `tests/runs/` |
+|---|---|---|
+| news | 3 | **none** — quotes below are from returned text only |
+| support | 3 | **none** — quotes below are from returned text only |
+| entity | 2 | **none** — quotes below are from returned text only |
+| availability | 3 | `availability-rep1.md`, `availability-rep2.md` (rep3 text only) |
+
+Quotes below are verbatim from what those reps returned, but **seven of the eleven runs left no
+reproducible artifact**. Anyone re-checking these verdicts should re-run the affected fixtures
+rather than treat this file as the primary record. The availability reps are the only ones with
+artifacts, and they are also the ones whose verdict is most clear-cut.
+
+This weakens the record; it does not change the verdicts, which were unanimous within each
+fixture. It is recorded rather than quietly omitted because a dropped class is a design
+decision and the evidence behind it should be checkable.
 
 ## Verdicts
 

@@ -66,8 +66,12 @@ defines it in one liftable sentence.
 - what does reconciliation software do
 - eBPF tracing meaning
 
-**Gate closed:** an API parameter reference, a changelog, or a pricing table. The reader
-arrived already knowing the term and is looking up a value, not an identity.
+**Gate closed:** the default value of a named configuration flag. Nobody reaches that subject
+without already knowing what the flag is — they arrived to look up a value, not an identity.
+
+Note this is a property of the subject, not of the page it sits on. "A changelog" is not a
+reason to close this gate; a changelog whose subject is a product most readers have never
+heard of still needs the product defined.
 
 ## Mechanism
 
@@ -177,9 +181,9 @@ happen?"). If you cannot point at something that occurred at a time, this gate i
 **Gate open:** a report that a warehouse fire destroyed a freight terminal last Tuesday. A
 reader can reasonably ask who established that, and whether it is confirmed.
 
-**Gate closed:** a product docs page describing how three-pass transaction matching works and
-what share of volume each pass clears. Nothing is asserted to have *occurred* — the subject is
-a mechanism and its specifications, not an event.
+**Gate closed:** a transaction-matching algorithm and the share of volume each pass clears.
+Nothing is asserted to have *occurred* — the subject is a mechanism and its specifications,
+not an event.
 
 ---
 
@@ -209,15 +213,21 @@ what the subject *is*, not on what the page says, which is what makes the gap re
 
 **Content:** a narrative engineering blog post about migration failures.
 **Head query:** *how to run database schema migrations without causing downtime*
-**Gates open:** Definitional, Mechanism, Procedural, Constraint, Evidence. Comparison and
-Qualification closed — the post argues a single pattern without positioning it against named
-alternatives or a segmented audience. Recency and Verification closed — the pattern's validity
-does not expire, and no event is asserted whose occurrence a reader would question.
+**Gates open:** Definitional, Mechanism, Comparison, Qualification, Procedural, Constraint,
+Evidence. Recency and Verification closed — a schema-migration pattern has no current state a
+reader must check, and no dated event is asserted whose occurrence a reader would question.
+
+Comparison and Qualification open here even though the post never names an alternative and
+never segments its audience. **That is the point.** Deployment patterns have alternatives a
+reader would weigh, and adopting one is a decision a team makes — so both gates open on what
+the subject is, and the post's silence becomes a reportable gap rather than a closed gate.
 
 | Sub-query | Class |
 |---|---|
 | what is the expand and contract migration pattern | Definitional |
 | why do migrations lock large tables | Mechanism |
+| expand and contract vs blue-green or shadow-table migrations | Comparison |
+| is expand and contract worth it for a small team | Qualification |
 | how do you split a schema change into two deploys | Procedural |
 | should backfills run inside migrations | Procedural |
 | what does expand and contract cost you in practice | Constraint |

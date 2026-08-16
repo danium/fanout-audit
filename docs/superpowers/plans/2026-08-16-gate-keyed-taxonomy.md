@@ -1,5 +1,20 @@
 # Gate-Keyed Sub-Query Taxonomy Implementation Plan
 
+> **SUPERSEDED IN PART — read this first.** This plan was written for a twelve-class design.
+> Task 1's RED baseline falsified three of the five proposed classes (Diagnostic, Affiliation,
+> Locality), so **nine classes shipped, not twelve**. Everything below describing twelve
+> classes, five new class sections, or the thresholds "three or fewer" / "eleven or twelve" is
+> historical and does **not** match the shipped files.
+>
+> Shipped values: nine classes; low stop at **two or fewer** gates; high stop at **all nine**.
+> Tasks 2–8 were executed directly rather than through per-task subagent dispatch — see the
+> ledger for that ruling. Task 3's guardrail fixtures (`guard-narrow.md`, `guard-broad.md`)
+> were **never created**, so neither threshold has a dedicated test; both were instead changed
+> in response to runs that tripped them incidentally.
+>
+> Authoritative sources, in order: the shipped files, then
+> `docs/superpowers/specs/2026-08-16-fanout-taxonomy-gates-design.md`, then this plan.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Replace the seven product-shaped sub-query classes with twelve classes, each gated by a yes/no question, so the skill covers any content genre without enumerating genres.

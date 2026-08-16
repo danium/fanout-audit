@@ -19,9 +19,14 @@ reps would have meant the wording was not doing work.
 
 No sub-query from either new class appeared in any rep, which was the condition for shipping.
 
-Procedural opening is what keeps this fixture at four gates. At three it trips the low-gate
-stop and produces no report, leaving the must-stay-closed check with nothing to check — the
-pre-flight ruling that caught this is recorded in the ledger.
+Procedural opening was originally added to the must-open set to keep this fixture above a
+low-gate stop that then sat at "three or fewer". **That rationale is now obsolete** — the
+threshold was subsequently lowered to two or fewer after the fabrication probe showed three
+gates is a normal audit, so three would no longer have stopped anything.
+
+Procedural stays in the must-open set on its own merits: v1's recorded audit of this fixture
+generated "how do you lower the indoor dew point" as an ABSENT sub-query, so a reader does act
+on this subject. All three reps opened it independently.
 
 ## Reconciliation docs — FAIL 2/3, then PASS 3/3 after fixes
 
