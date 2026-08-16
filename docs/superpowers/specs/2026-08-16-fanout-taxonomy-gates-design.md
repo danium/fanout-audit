@@ -1,7 +1,30 @@
 # Design: gate-keyed sub-query taxonomy
 
 Date: 2026-08-16
-Status: approved in principle, revised after review, not yet implemented
+Status: **implemented as nine classes, not twelve.** See the revision note below.
+
+## Revision note — what RED changed
+
+This spec proposed five new classes. The RED baseline falsified three of them: the existing
+seven-class taxonomy already produced the sub-queries Diagnostic, Affiliation, and Locality
+were meant to add.
+
+| Proposed class | Result | Reps |
+|---|---|---|
+| Diagnostic | **dropped** — every support rep named the error string unprompted | 3/3 falsified |
+| Affiliation | **dropped** — both entity reps produced role and history sub-queries | 2/2 falsified |
+| Locality | **dropped** — all three availability reps produced geography-keyed sub-queries | 3/3 falsified |
+| Recency | kept, in the narrowed current-state form | 3/3 held |
+| Verification | kept | 3/3 held |
+
+Evidence in `tests/results/red-baseline.md`. The sections below are amended in place where the
+count matters — class table, guardrail thresholds, expected gate sets, and done-when. Sections
+describing the *approach* (gate polarity, composition-not-genre, the rejected alternatives) are
+unchanged, because RED did not challenge them.
+
+The design rationale survives the shrinkage: gates keyed to the subject still cover any genre
+without enumerating genres. There are simply fewer classes to gate than predicted, because the
+seven existing ones reach further than the spec assumed.
 
 ## Problem
 
@@ -97,7 +120,7 @@ Wording for the reference file, verbatim:
 > the content does not cover it.** If a gate opens and the content says nothing, that is an
 > ABSENT finding — which is the point of the audit.
 
-## The twelve classes
+## The classes — nine shipped, three struck
 
 | Class | Gate question | Status |
 |---|---|---|
@@ -109,10 +132,10 @@ Wording for the reference file, verbatim:
 | Evidence | Does the subject, **or a claim the page makes about it**, invite "does that actually work?" | existing |
 | Procedural | Is the subject something a reader would execute or set up? | existing |
 | Recency | Would a reader need to check the subject's *current* state — a version, status, price, or ongoing situation? | **new** |
-| Verification | Does the subject, **or an assertion the page makes**, involve an event a reader might doubt occurred? | **new** |
-| Affiliation | Is the subject a named person, organisation, or place? | **new** |
-| Locality | Does the subject's availability or applicability vary by geography or jurisdiction? | **new** |
-| Diagnostic | Can the subject itself fail or go wrong in ways a reader would search for? | **new** |
+| Verification | Does the subject, **or an assertion the page makes**, involve a **dated or datable event** whose occurrence a reader might doubt? | **new** |
+| ~~Affiliation~~ | ~~Is the subject a named person, organisation, or place?~~ | **dropped — RED** |
+| ~~Locality~~ | ~~Does the subject's availability or applicability vary by geography or jurisdiction?~~ | **dropped — RED** |
+| ~~Diagnostic~~ | ~~Can the subject itself fail or go wrong in ways a reader would search for?~~ | **dropped — RED** |
 
 Three gates were tightened during review and the reasons matter for implementation:
 
@@ -189,9 +212,10 @@ Step 3 gains two guardrails. Both are **pre-report stops**, not report content �
 contract permits three finding sections and nothing else, and neither guardrail gets a slot in
 it. Both mirror the existing step 2 stop-and-ask.
 
-- **Eleven or twelve gates open** → do not report. Nearly every gate opening usually means the
-  subject is broader than one head query. Return to step 2 and ask.
-- **Three or fewer gates open** → do not report. State which gates opened and ask whether the
+- **All nine gates open** → do not report. Nearly every gate opening usually means the
+  subject is broader than one head query. Return to step 2 and ask. (Scaled from eleven-or-twelve
+  when the class count dropped to nine.)
+- **Two or fewer gates open** → do not report. State which gates opened and ask whether the
   head query should be broader. **The cause is a head query that is too narrow, not thin
   content** — gates do not inspect whether the content is thin, and phrasing this as a content
   judgment would contradict the polarity rule.
@@ -203,12 +227,12 @@ the reference, and that stays true.
 
 - "Applies when" column becomes the gate question
 - The polarity rule stated verbatim near the top
-- Five new class sections, each with the gate, two or three example sub-queries, and a worked
+- Two new class sections (Recency, Verification), each with the gate, two or three example sub-queries, and a worked
   example of the gate **closed** — closed by the nature of the subject, never by content
   absence
 - Definitional's existing "skip when" guidance is preserved and becomes its gate
 - The two existing worked decompositions gain a line recording which gates opened
-- Two new worked decompositions covering subjects that trip the new gates
+- Worked decompositions annotated with the gates they open
 - Approximately 990 → 1,700 words
 
 ### `references/passage-criteria.md` — one extension
@@ -234,7 +258,7 @@ Unchanged except where marked:
 
 1. Read the content
 2. Infer the head query; stop and ask if more than one
-3. **Open gates → stop and ask if 3 or fewer, or 11 or more → generate six to twelve
+3. **Open gates → stop and ask if 2 or fewer, or all 9 → generate six to twelve
    sub-queries from open classes only**
 4. Classify each against the standalone test: covered, not extractable, absent
 5. Report
@@ -319,24 +343,28 @@ in either column may go either way without failing the run.
 
 **Dew-point explainer** — subject: why relative humidity misleads and dew point does not.
 
-- **Must open:** Definitional, Mechanism, Comparison
-- **Must stay closed:** Recency, Verification, Affiliation, Locality, Diagnostic
+- **Must open:** Definitional, Mechanism, Comparison, **Procedural**
+- **Must stay closed:** Recency, Verification
 
-All five new classes must stay closed here. Diagnostic in particular: the page explains
-condensation, but the *subject* cannot fail, so explaining a failure mechanism is Mechanism.
-**A sub-query from any of the five new classes in any dew-point rep means the gates are not
-binding and the design does not ship.** One failure out of three is a failure — a gate that
-holds two times in three is not a gate.
+Procedural is in the must-open list as a pre-flight ruling, not an afterthought. Without it the
+expected set is exactly three gates, which trips the low-gate guardrail and produces **no
+report at all** — leaving the must-stay-closed check with nothing to check, while looking like
+a guardrail working correctly. The justification is on file: v1's recorded audit of this
+fixture generated "how do you lower the indoor dew point" as an ABSENT sub-query, so a reader
+does act on this subject.
+
+**A sub-query from either new class in any dew-point rep means the gates are not binding and
+the design does not ship.** One failure out of three is a failure — a gate that holds two times
+in three is not a gate.
 
 **Reconciliation docs page** — subject: reconciliation software for multi-processor finance
 teams.
 
 - **Must open:** Constraint
-- **Must stay closed:** Verification, Affiliation
+- **Must stay closed:** Verification
 
-Recency, Locality, and Diagnostic may legitimately open here — connector currency, per-country
-bank coverage, and unmatched-record handling are all real sub-queries for this subject. This is
-the fixture that will reveal whether Recency over-opens in practice.
+Recency may legitimately open here — connector currency is a real sub-query for this subject —
+and this is the fixture that will reveal whether Recency over-opens in practice.
 
 **Polarity regression — the decisive check.** **Every** reconciliation rep must report pricing
 as ABSENT. Not a majority: the polarity rule is the core of this design, and allowing it to
@@ -375,14 +403,13 @@ so `docs/superpowers/specs/` lands in every user's skills folder.
 
 ## Done when
 
-- All twelve gates phrased per the polarity rule, with both clauses stated verbatim in the
+- All nine gates phrased per the polarity rule, with both clauses stated verbatim in the
   reference file
-- All twelve gates documented with a worked open and closed example, where the closed example
+- All nine gates documented with a worked open and closed example, where the closed example
   is closed by the nature of the subject and never by content absence — including Definitional,
   which is now conditional
-- RED failures recorded verbatim for each of the five new classes across 3 reps, or the class
-  dropped on a majority of reps
-- GREEN runs produce correctly gated sub-queries on all four new content types
-- **Every** dew-point regression rep is free of sub-queries from all five new classes
+- RED failures recorded verbatim for each proposed class across 3 reps, or the class dropped on
+  a majority of reps — **done: three of five dropped**
+- **Every** dew-point regression rep is free of sub-queries from Recency and Verification
 - **Every** reconciliation regression rep reports pricing as ABSENT
 - No fabrication probe rep supplies an invented date or source

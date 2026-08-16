@@ -26,6 +26,12 @@ into six to twelve sub-queries a fan-out would plausibly produce, and checks whe
 content contains a self-contained passage answering each. Every sub-query lands in one of
 three states: covered, present but not extractable, or absent.
 
+Sub-queries are drawn from nine intent classes, each gated by a yes/no question about the
+subject and about what the page claims. The classes carry no genre labels — a news report, an
+API reference, and a storefront open different gates because their subjects differ, not because
+the skill recognises a content type. Gates also never close because your page omits something,
+which is what makes a genuine gap reportable rather than invisible.
+
 **Module B — entity consistency.** Given several descriptions of the same entity — site,
 docs, README, directory listings, a conference bio — it detects drift in how you describe
 yourself and proposes one canonical sentence.

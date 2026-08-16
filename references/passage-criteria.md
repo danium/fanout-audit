@@ -81,9 +81,26 @@ pass" and "remaining records" both assume a first pass the passage never describ
 Every reference resolves inside the passage. "The expand deploy" is defined by the sentence
 it appears in, not by an earlier section.
 
+### Also fails, in time rather than in space
+
+**Sub-query:** *is the northern rail spur still closed*
+
+> The spur has been closed since the fire, and no timeline exists yet for reopening it. Crews
+> have recently begun clearing the site, and the operator said last week that a decision on
+> rebuilding is still some way off.
+
+"Since the fire", "recently", and "last week" are unresolved references exactly as "as
+mentioned above" is — they resolve against the moment of writing, which does not travel with
+the passage. Lifted out, this asserts a state without saying when that state held, and a reader
+arriving a year later cannot tell whether any of it is still true.
+
+Fix by resolving the reference inside the passage: name the month and year, or give the
+version, rather than pointing at the moment of writing.
+
 **Watch for these openers.** Each is a near-certain criterion 2 failure: *That, This, It,
 There is one more, The thing that, As mentioned, As we saw, Building on this, Instead, The
-second, Remaining, Such, These.*
+second, Remaining, Such, These* — and, for the temporal form: *recently, currently, as of
+writing, at present, last year, last week, these days, now, today, still.*
 
 ---
 
