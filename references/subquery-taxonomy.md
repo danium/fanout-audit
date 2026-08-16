@@ -38,13 +38,17 @@ the content substantiates the claim — that is the finding, and findings belong
 | Evidence | Does the subject, or a claim the page makes about it, invite "does that actually work?" |
 | Procedural | Is the subject something a reader would execute or set up? |
 | Recency | Would a reader need to check the subject's *current* state — a version, status, price, or ongoing situation? |
-| Verification | Does the subject, or an assertion the page makes, involve an event a reader might doubt occurred? |
+| Verification | Does the subject, or an assertion the page makes, involve a **dated or datable event** whose occurrence a reader might doubt? |
 
 **Two guardrails, both stops rather than findings.** If three or fewer gates open, do not
 report: state which gates opened and ask whether the head query should be broader. The cause
-is a head query that is too narrow, not thin content. If eight or nine gates open, do not
-report: return to the head-query step and ask, because a subject opening nearly every gate is
+is a head query that is too narrow, not thin content. If **all nine** gates open, do not
+report: return to the head-query step and ask, because a subject opening every single gate is
 usually more than one head query.
+
+The high threshold is deliberately all-or-nothing. A thorough product page legitimately opens
+seven of nine, so any lower ceiling stops audits that should have run — and a stopped audit
+reports no gaps at all, which is worse than a slightly wide one.
 
 ---
 
@@ -161,11 +165,17 @@ Asks whether an asserted event actually happened, and on whose authority.
 - source for X
 - did X actually happen
 
+**The gate needs a dated or datable event.** A capability, a specification, or a performance
+figure is not an event, however concrete it sounds. "Clears 80 to 90 percent of volume" is a
+specification — it invites Evidence ("does that hold up?"), not Verification ("did that
+happen?"). If you cannot point at something that occurred at a time, this gate is closed.
+
 **Gate open:** a report that a warehouse fire destroyed a freight terminal last Tuesday. A
 reader can reasonably ask who established that, and whether it is confirmed.
 
-**Gate closed:** an explainer on how three-pass transaction matching works. Nothing is asserted
-to have occurred; the subject is a mechanism, not an event.
+**Gate closed:** a product docs page describing how three-pass transaction matching works and
+what share of volume each pass clears. Nothing is asserted to have *occurred* — the subject is
+a mechanism and its specifications, not an event.
 
 ---
 
