@@ -13,7 +13,7 @@ requires a majority of three.
 | Recency | no sub-query asks whether the state still holds | **partially held** | 3/3 | **KEEP (narrowed)** |
 | Diagnostic | no sub-query touches the error string | **falsified** | 3/3 | **DROP** |
 | Affiliation | nothing on roles, history, or connections | **falsified** | 2/2 | **DROP** |
-| Locality | nothing keyed to geography or jurisdiction | **falsified** | 1/1 | **DROP (provisional)** |
+| Locality | nothing keyed to geography or jurisdiction | **falsified** | 3/3 | **DROP** |
 
 ## Evidence
 
@@ -45,15 +45,32 @@ subject. rep3 additionally caught a genuine entity gap v1 was not expected to fi
 kind of organization is Thrace & Wexford", noting the page "calls it 'the firm' throughout"
 while describing details that "point in different directions and are never reconciled."
 
-### Locality — DROP, provisional (falsified 1/1, insufficient reps)
+### Locality — DROP (falsified 3/3)
 
-The single availability rep produced:
+rep1 produced three more:
+
+- "why isn't Corriewave available everywhere its satellites reach"
+- "how do I find out if Corriewave is available at my address"
+- "why do some Corriewave markets open before others"
+
+rep3 produced:
 
 - "is Corriewave available in my area" — classified NOT EXTRACTABLE, criterion 5
 - "why does Corriewave open some markets before others"
 
-One rep is not the majority-of-three the plan requires. The verdict is provisional and the
-two missing reps should be run before Locality is deleted from the design.
+rep2 produced four geography-keyed sub-queries, more than the proposed Locality class would
+have prescribed:
+
+- "is Corriewave available everywhere its satellites reach"
+- "how do you check whether Corriewave is available at your address"
+- "should a home buyer assume a property advertised with Corriewave will have service"
+- "why do some Corriewave markets open for orders before others"
+
+The third of these is the interesting one. It is a real-world availability question keyed to
+a specific buyer situation, and nothing in the proposed Locality gate ("does the subject's
+availability vary by geography or jurisdiction?") would have produced it. v1 reached it
+through Qualification and Constraint. Adding Locality would not have improved this audit and
+might have narrowed it.
 
 ### Verification — KEEP (prediction held 3/3)
 

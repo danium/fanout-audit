@@ -81,10 +81,26 @@ two intents is the single most common case where that happens.
 
 ### 3. Generate sub-queries
 
-Six to twelve, from the seven intent classes in `references/subquery-taxonomy.md`.
+Six to twelve, from the nine intent classes in `references/subquery-taxonomy.md`.
 
-Skip classes that do not fit the topic. A pricing sub-query on a conceptual explainer is
-noise. Six well-fitted sub-queries beat twelve padded ones — do not pad to reach a count.
+Each class carries a gate question. **A class contributes sub-queries only if its gate opens.**
+Gates open on what the subject is and on what the page claims; a gate never closes because the
+content does not cover it. If a gate opens and the content says nothing, that is an ABSENT
+finding — which is the point of the audit.
+
+Skip classes whose gate is closed. A pricing sub-query on a conceptual explainer is noise. Six
+well-fitted sub-queries beat twelve padded ones — do not pad to reach a count. A class may
+yield more than one sub-query, so gates are not counted against the six-to-twelve range.
+
+**Two stops before you report:**
+
+- **Three or fewer gates open** → do not report. State which gates opened and ask whether the
+  head query should be broader. The cause is a head query that is too narrow, not thin content.
+- **Eight or nine gates open** → do not report. Return to step 2 and ask, because a subject that
+  opens nearly every gate is usually more than one head query.
+
+Both are stops, like step 2. Neither is a section in the report — the output contract permits
+three finding sections and nothing else.
 
 ### 4. Classify each sub-query
 
