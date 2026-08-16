@@ -51,7 +51,22 @@ shard whose holder is not actually dead" (all three reps) — which is Diagnosti
 arriving through the existing Mechanism and Constraint classes. Adding a Diagnostic class
 would relabel work v1 already does.
 
-### Affiliation — DROP (falsified 2/2)
+### Affiliation — DROP (falsified 2/2) — **rule deviation, stated plainly**
+
+The KEEP/DROP rule requires a majority of three reps. Affiliation was dropped on **two**.
+
+An attempt to run a third failed as a baseline: it was dispatched against the already-modified
+nine-class skill rather than v1, so it tests the wrong thing and is not counted. Its output is
+in `tests/runs/entity-rep3.md` and is consistent with the DROP — it produced "what was
+Belmonte's professional background before Thrace & Wexford" with no Affiliation class present —
+but consistency after the change is not baseline evidence, and treating it as such would be
+exactly the single-sample reasoning this rule exists to prevent.
+
+So: **the Affiliation DROP rests on two unanimous baseline reps, one short of the rule.** It is
+the weakest of the three drops. Re-running two v1 entity reps would settle it; the v1 skill is
+recoverable from git history at commit `217a45e`.
+
+Both reps that did run:
 
 Both entity reps produced role, history, and connection sub-queries:
 
