@@ -64,10 +64,24 @@ rank but never get cited".
 
 ## The standalone test
 
-The sharpest part of the skill, and the part most directly grounded in the record. FastSearch
-retrieves fewer documents than Search and favours text that survives being lifted out.
+Half of the reasoning behind this test is in the record and half is inference, so here is
+which is which.
 
-A passage passes only if all five hold:
+**From the record.** Google's antitrust filing states that FastSearch "delivers results more
+quickly than Search because it retrieves fewer documents, but the resulting quality is lower
+than Search's fully ranked web results" — lower, but good enough for grounding.
+
+**Not from the record.** Nothing disclosed describes passage- or chunk-level retrieval, or any
+preference for text that stands alone. That step is an inference: if a grounding pass works
+from a smaller and lower-quality candidate set, a passage carrying its own context is likelier
+to be usable than one that depends on its surroundings.
+
+So treat the standalone test as a defensible inference, not a documented mechanism. It is
+useful because passages that pass it are better writing for a reader arriving cold, which is
+true regardless of how any retrieval system works.
+
+Criteria 1, 2, 3, and 5 are gates. Criterion 4 is a length diagnostic — it never fails a
+passage on its own, it tells you which other criterion to check.
 
 | # | Criterion |
 |---|---|
@@ -123,14 +137,23 @@ failing grade on a post whose only problem is where its sentences start.
 
 This skill accompanies [an article by Daniil Sokolov](https://x.com/daniilsokolov/status/2088613085162483785).
 
-The two mechanisms it checks are the ones disclosed in the Google antitrust record that can
-be verified against your own content offline: that AI Mode decomposes a question into
-subtopics and issues many queries at once, and that FastSearch retrieves a smaller candidate
-set than Search, favouring text that stands alone.
+Two disclosed facts sit under this skill, and it is worth being exact about both, since the
+skill's own rule is that a claim you cannot point at a source for does not get written down.
 
-Everything beyond those two facts — how the decomposition works, how chunks are scored, how
-many sub-queries are issued — is undisclosed. The skill is built to be useful without
-pretending otherwise.
+**Query fan-out**, in Google's own words, announcing AI Mode in May 2025: "Under the hood, AI
+Mode uses our query fan-out technique, breaking down your question into subtopics and issuing
+a multitude of queries simultaneously on your behalf."
+([blog.google](https://blog.google/products-and-platforms/products/search/ai-mode-search/))
+
+**FastSearch**, from the DOJ v. Google filing: it "delivers results more quickly than Search
+because it retrieves fewer documents, but the resulting quality is lower than Search's fully
+ranked web results," and is "based on RankEmbed signals." Reported during the 2025 remedies
+trial. ([Search Engine Land](https://searchengineland.com/google-fastsearch-464557))
+
+That is the whole disclosed surface. The actual fan-out decomposition, how many sub-queries
+are issued, how candidates are chunked or scored, and whether standalone text is favoured are
+all **undisclosed**. Where this skill goes beyond the two quotes above it is inferring, and it
+says so rather than borrowing their authority.
 
 ## Licence
 
