@@ -252,6 +252,45 @@ This is a diagnostic, not a gate. Plenty of good passages carry only claim and e
 definitional passage may need nothing else. Use it when you are unsure whether to call
 criterion 5, not as a fourth thing to enforce.
 
+### The vague claim — a criterion 5 failure that reads as a complete sentence
+
+**Sub-query:** *does structured onboarding reduce churn*
+
+#### Fails
+
+> Structured onboarding is effective at reducing churn. Teams that invest in it see meaningful
+> improvements, and the benefits compound over time.
+
+Grammatically complete, and it answers nothing. "Effective", "meaningful" and "compound" are
+unfalsifiable — a reader arriving cold learns that someone approves of onboarding. Lifted out,
+it does not answer the sub-query, so it is a **criterion 5** failure even though nothing in it
+is unclear, unnamed, or badly ordered.
+
+This is the most common failure in marketing copy and the easiest to miss, because every other
+criterion passes.
+
+#### Passes — with a figure
+
+> Structured onboarding reduces churn most sharply in the first 30 days, where the majority of
+> cancellations occur. Teams running a guided setup with a scheduled check-in inside that
+> window retain measurably more accounts than teams relying on documentation alone.
+
+#### Passes — without one
+
+> Structured onboarding reduces churn by moving the moment a customer first succeeds with the
+> product earlier than the moment they first consider cancelling. A guided setup with a
+> scheduled check-in in the first month does this; documentation alone does not, because it
+> requires the customer to already know what to look for.
+
+**Both pass, and the second carries no statistic at all.** Evidence can be a figure, a
+mechanism, or a scope — the claim has to become checkable, not numeric. What fails the first
+version is vagueness, not the absence of a number.
+
+**If you do not have the figure, narrow the claim — do not invent one.** "Reduces churn in the
+first 30 days" is sourceable from your own product; "reduces churn by 34%" is a number someone
+has to have measured. Recording this as a criterion 5 failure means telling the author to make
+the claim specific, never to go find a statistic to put in it.
+
 ## When the passage is a table row
 
 The five criteria are written for prose, and applying them to prose is most of the job. But
