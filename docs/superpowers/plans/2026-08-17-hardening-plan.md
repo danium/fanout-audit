@@ -38,7 +38,18 @@ say why. An honest scope beats a broken promise.
 **Effort:** small, if a non-Claude runtime is available. This is the single highest-value item
 in the plan.
 
-### B. Module B ships on one smoke test
+### B. Module B ships on one smoke test — DONE, decision: it stays
+
+Tested 2026-08-17. Detection 2/2, ask-don't-pick 2/2, no false flags 3/3, nothing invented.
+One genuine defect found and fixed: `entity-drift.md` contradicted itself on whether a missing
+component is drift, and reps split on the headline verdict as a result. Resolved by
+"Omission is not contradiction" and verified.
+
+Extraction rejected — the case rested on Module B intruding into Module A reports, which did
+not survive checking (zero of 25 committed runs). Full record in
+`tests/results/module-b-round-1.md`. Original reasoning retained below.
+
+
 
 Entity consistency never received a RED baseline, never received gate questions, and received
 nothing from the gate-keying work. One smoke test exists from the original build. It is roughly

@@ -41,7 +41,23 @@ contradicts a finance-team audience. Flag the set, not just the outlier.
 
 Three unrelated claims: multi-source matching, speed, and headcount avoidance. The first is
 a capability, the second is an outcome, the third is a different outcome for a different
-buyer. A description with no differentiator at all is also drift — flag it as missing.
+buyer.
+
+### Omission is not contradiction
+
+**A source that simply leaves a component out is not drift.** A conference bio, a package
+registry blurb and a tweet all drop components for length, and flagging them produces noise on
+exactly the surfaces where brevity is correct — which is how a drift report stops being read.
+
+Flag a missing component in one of two cases only:
+
+- The omission **contradicts** another source. Saying "for small businesses" where another says
+  "for enterprise IT" is contradiction. Saying nothing about audience is not.
+- **No source states it at all.** If not one of five descriptions carries a differentiator, the
+  entity has no stated distinguishing claim anywhere, and that is a real gap worth reporting.
+
+The test is whether a reader comparing two sources would come away with conflicting beliefs. A
+shorter description leaves them with fewer beliefs, not wrong ones.
 
 ### Audience contradicts
 
