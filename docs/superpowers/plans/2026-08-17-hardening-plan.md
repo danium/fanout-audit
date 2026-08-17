@@ -148,6 +148,33 @@ rather than auditing the surrounding copy as though it were the page.
 
 ---
 
+### I. The README fails the skill's own audit
+
+Running the skill against its own README returned **covered=2, not extractable=6, absent=2**.
+Full run in `tests/runs/self-readme-rep1.md`.
+
+Not extractable: the five criteria, the install procedure, why the decomposition is simulated,
+how this differs from an on-page SEO tool, the licence, and the runtimes it works with.
+Absent: **who it is for and when to run it**, and whether the compatibility list is current.
+
+Two of those findings — the runtimes one and the currency one — are item **A** arriving from a
+different direction. A was found by asking what had never been tested; these were found by
+reading the page. Same defect, two independent methods.
+
+The one COVERED finding is the disclosed-facts section, which was rewritten after the earlier
+review flagged an unsourced claim presented as record. That fix is visible to the audit; the
+rest of the README has not had the same treatment.
+
+**Do:** fix the README against its own report. Start with "who is it for", which is a real gap
+rather than an extractability problem — the README describes what the skill does and never says
+who should run it or when.
+
+**Verify:** re-check each fixed item individually. Per the re-run guidance, do **not** compare
+counts across runs — the decomposition regenerates.
+
+**Effort:** small. Worth doing early, because a tool whose own front page fails its standard is
+hard to argue for.
+
 ## Tier 4 — Record hygiene
 
 - **Affiliation was dropped on two baseline reps** where the rule requires three. Recoverable:
