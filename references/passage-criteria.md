@@ -164,6 +164,16 @@ answer and the padding.
 
 Roughly 90 words. Complete, and nothing in it is scaffolding.
 
+### The range is calibrated for English
+
+40–120 words is an English heuristic and nothing more. It does not transfer: German compounds
+carry in one word what English spreads over four, and a character-based script has no
+word-count equivalent at all.
+
+Auditing content in another language, ignore the number and keep what it stands for — a passage
+long enough to explain its claim and short enough not to be carrying its neighbours' context.
+Criterion 5 does the real work in every language; criterion 4 is an English shortcut to it.
+
 ### How this criterion resolves
 
 The range is a diagnostic, not a gate. Length on its own never fails a passage — it tells you

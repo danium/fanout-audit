@@ -66,8 +66,23 @@ to paste without checking, and it is the user's name on it afterwards.
 
 ### 1. Read the content
 
-Accept a file path, a pasted block, or a URL. This skill does not fetch. If given a URL and
-no fetch tool is available, ask the user to paste the content.
+Accept a file path, a pasted block, or a URL. This skill does not fetch on its own. If given a
+URL and no fetch tool is available, ask the user to paste the content.
+
+**If you do have a fetch tool, what you retrieve has to be the page's actual text.** Two
+failure modes have both been observed, and both produce a confident audit of something that
+was never on the page:
+
+- **A summarising fetcher returns a summary.** You cannot judge whether a passage survives
+  being lifted out by reading a paraphrase of that passage — every criterion is about the
+  author's exact sentences. If your fetch tool answers a prompt about the page rather than
+  returning its text, it is the wrong tool for this.
+- **Collapsed content reads as empty.** Accordions and `<details>` blocks commonly hold FAQ
+  answers, and text extraction that respects rendering returns nothing for them. Confirm
+  before reporting a gap: content you could not see is not content that is absent.
+
+When you cannot verify you have the whole text, say so and audit what you have, explicitly
+scoped. Never report ABSENT for a section you could not read.
 
 ### 2. Infer the head query
 
@@ -163,14 +178,45 @@ ABSENT (n)
   [sub-query]
     → no passage answers this
     → suggested: [what a passage would need to contain]
+
+WHAT GOOD LOOKS LIKE            ← include only if NOT EXTRACTABLE is greater than zero
+  criterion [n] — [name of the criterion that failed most often above]
+    before: [a short generic passage that fails it]
+    after:  [the same passage, fixed]
 ```
 
 The order is deliberate. Covered first gives the author something before the criticism. Not
 extractable comes before absent because those are the cheap fixes — the answer already
 exists and needs moving, not writing.
 
+**The fourth part is a fixed slot, not an invitation.** Exactly one before/after pair, for the
+single criterion that failed most often in this report. It exists because "fails criterion 5"
+plus a one-line fix is thin help for anyone who does not write for a living, and the worked
+examples that would help are in the reference file, which the reader never sees.
+
+Two hard limits on it. **The example is generic — never the reader's own content rewritten.**
+Rewriting their passage is ghostwriting, which is the drift this contract exists to prevent,
+and it reintroduces fabrication risk the generic example does not carry. And **one pair, not
+one per finding** — a gallery of examples is the sprawl this contract exists to prevent.
+
+If NOT EXTRACTABLE is zero, the section does not appear.
+
 **Quantification in the report is exactly three numbers: the three counts.** No score, no
 percentage, no grade, no tier ranking, no decile, no effort estimate, no priority table.
+
+## Re-running after fixes
+
+**The counts are not a progress metric across runs.** Step 3 regenerates the decomposition
+every time, and the sub-queries you get on the second run will not be identical to the first —
+gate opening varies at the margins, and so does phrasing. A report that goes from 5 not
+extractable to 3 may be measuring a different five.
+
+To check whether a fix worked, re-check that specific item: take the sub-query you fixed, find
+the passage now, and apply the standalone test to it. That is a direct comparison. Comparing
+totals is not.
+
+Say this to the user when they return with a revised page. Someone who has just done the work
+will otherwise read a changed count as a result, and it is not one.
 
 **These three sections are the whole finding set.** Title tags, meta descriptions, schema
 markup and JSON-LD, `llms.txt`, heading counts, internal linking, freshness signals, word
