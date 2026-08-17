@@ -9,13 +9,13 @@ nothing, and writes no copy for you.
 
 ## The caveat, up front
 
-Google has published roughly one sentence about query fan-out: AI Mode breaks a question into
-subtopics and issues many queries at once. **The decomposition itself is disclosed nowhere** —
-not in the trial record, not in Google's documentation.
+fanout-audit simulates a plausible query decomposition rather than reproducing Google's,
+because Google's decomposition is disclosed nowhere — not in the trial record, not in Google's
+documentation. What Google has published is roughly one sentence: AI Mode breaks a question
+into subtopics and issues many queries at once.
 
-So this skill simulates a plausible decomposition. It does not replicate Google's, and it
-cannot. Every report it produces opens with that statement, because a tool that quietly
-implies it knows Google's fan-out is the exact failure it exists to argue against.
+Every report fanout-audit produces opens by saying so, because a tool that quietly implies it
+knows Google's fan-out is the exact failure it exists to argue against.
 
 Coverage gaps are a **content completeness signal**. They are not a ranking prediction.
 
@@ -36,6 +36,24 @@ which is what makes a genuine gap reportable rather than invisible.
 docs, README, directory listings, a conference bio — it detects drift in how you describe
 yourself and proposes one canonical sentence.
 
+## Who it is for, and when to run it
+
+fanout-audit is for people who own the content and can edit it: technical writers, docs
+owners, founders writing their own pages, and content teams. It assumes you can change
+sentences on the page, because every finding it produces is an edit instruction.
+
+Run it when a page targets a question you want to be the answer to, and you want to know
+whether your answer would survive being quoted away from the rest of the page. It is most
+useful on comparison pages, product docs, how-to guides, and pricing pages — content where a
+specific question has a specific answer somewhere in the prose.
+
+**It is not worth running** on a page with no question behind it, on content you cannot edit,
+or as a way to decide what to write next. It audits the answer you already wrote; it does not
+tell you which questions are worth answering, and it cannot tell you whether anyone is asking
+the question your page targets.
+
+One page takes a few minutes. There is no setup, no account, and no data leaves your machine.
+
 ## What it does not do
 
 - No rank tracking, keyword volume, or SERP scraping
@@ -51,22 +69,37 @@ That last one is the point where this skill is most likely to cause harm if it s
 it is enforced rather than suggested. A fluent invented sentence about your own product is
 easy to paste without checking, and it goes out under your name.
 
-It is also deliberately not an on-page SEO tool. Title tags, meta descriptions, schema
-markup, `llms.txt`, heading counts, and internal linking are a different job.
+fanout-audit is not an on-page SEO tool and differs from one in what it examines: it reads
+your sentences and asks whether each answer survives being lifted off the page. An on-page SEO
+tool reads your markup. Title tags, meta descriptions, schema, `llms.txt`, heading counts and
+internal linking are all outside fanout-audit's output contract, and a report that wandered
+into them would be a different job done badly.
 
 ## Install
 
-Personal skills live in your runtime's skills directory:
+Install fanout-audit by cloning it into your agent runtime's skills directory:
 
 ```bash
 git clone https://github.com/danium/fanout-audit ~/.claude/skills/fanout-audit
 ```
 
-Codex, Copilot CLI, and Gemini CLI also recognise `~/.agents/skills/`.
+Then either ask for fanout-audit by name, or just describe the problem — it triggers on AI
+Overviews, AI Mode, GEO, LLM citation, AI search visibility, query fan-out, and "why does my
+content rank but never get cited".
 
-Then ask for it by name, or just describe the problem — the skill triggers on AI Overviews,
-AI Mode, GEO, LLM citation, AI search visibility, query fan-out, and "why does my content
-rank but never get cited".
+## Requirements and tested runtimes
+
+fanout-audit is markdown only. It has no dependencies, no build step, and makes no network
+calls, so it needs nothing beyond an agent runtime that loads skills from a directory.
+
+**It has been tested on Claude Code and nowhere else.** Every verification run in this
+repository was Claude. The skill is largely discipline enforcement — refusing to draft absent
+passages, declining out-of-scope findings, stopping on an ambiguous head query — and those are
+the properties most likely to degrade on a different or smaller model. Codex, Copilot CLI and
+Gemini CLI read `~/.agents/skills/`, so installing there should work, but no verification run
+has been done on any of them. Treat non-Claude use as untested rather than supported.
+
+Compatibility statement last verified August 2026.
 
 ## The standalone test
 
@@ -98,8 +131,10 @@ be cited. Extractability and credibility are independent axes — well-shaped co
 verifiable trail behind its claims gets retrieved perfectly well. A clean report here means
 your answers can be lifted, not that they should be trusted.
 
-Criteria 1, 2, 3, and 5 are gates. Criterion 4 is a length diagnostic — it never fails a
-passage on its own, it tells you which other criterion to check.
+fanout-audit judges every passage against five criteria: the answer leads, references resolve
+inside the passage, the entity is named, the length is sane, and the passage still answers the
+sub-query once lifted out. Criteria 1, 2, 3 and 5 are gates. Criterion 4 is a length
+diagnostic — it never fails a passage on its own, it tells you which other criterion to check.
 
 | # | Criterion |
 |---|---|
@@ -175,4 +210,5 @@ says so rather than borrowing their authority.
 
 ## Licence
 
-MIT. See [LICENSE](LICENSE).
+fanout-audit is released under the MIT licence, which permits commercial use, modification and
+redistribution provided the copyright notice is retained. Full text in [LICENSE](LICENSE).

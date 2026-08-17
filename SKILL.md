@@ -181,8 +181,8 @@ ABSENT (n)
 
 WHAT GOOD LOOKS LIKE            ← include only if NOT EXTRACTABLE is greater than zero
   criterion [n] — [name of the criterion that failed most often above]
-    before: [a short generic passage that fails it]
-    after:  [the same passage, fixed]
+    before: [the failing example for that criterion, copied from passage-criteria.md]
+    after:  [the passing example for that criterion, copied from passage-criteria.md]
 ```
 
 The order is deliberate. Covered first gives the author something before the criticism. Not
@@ -194,10 +194,19 @@ single criterion that failed most often in this report. It exists because "fails
 plus a one-line fix is thin help for anyone who does not write for a living, and the worked
 examples that would help are in the reference file, which the reader never sees.
 
-Two hard limits on it. **The example is generic — never the reader's own content rewritten.**
-Rewriting their passage is ghostwriting, which is the drift this contract exists to prevent,
-and it reintroduces fabrication risk the generic example does not carry. And **one pair, not
-one per finding** — a gallery of examples is the sprawl this contract exists to prevent.
+**Copy the pair from `references/passage-criteria.md`. Do not compose one.** Every criterion
+there already carries a worked failing example and a worked passing example; take the pair
+belonging to the criterion that failed most and reproduce it. Change nothing.
+
+This is structural, not stylistic. Composing an example means writing prose, and writing prose
+next to a report about the reader's page pulls toward rewriting *their* passage — which is
+ghostwriting, and which reintroduces exactly the fabrication risk the rest of this contract
+removes. A run on a smaller model did precisely that: it rewrote the audited page's own
+sentences and inserted two dates that appeared nowhere in the source. There is nothing to
+invent if the example is copied.
+
+**One pair, not one per finding** — a gallery of examples is the sprawl this contract exists to
+prevent.
 
 If NOT EXTRACTABLE is zero, the section does not appear.
 
