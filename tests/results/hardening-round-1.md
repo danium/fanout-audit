@@ -54,7 +54,7 @@ from `references/passage-criteria.md`, not composed. Every criterion there alrea
 worked failing and passing example. Composing prose next to a report about someone's page pulls
 toward rewriting their passage; there is nothing to invent if the example is copied.
 
-## C — COVERED verification → INCOMPLETE (1 of 3 reps)
+## C — COVERED verification → PASS 3/3
 
 Fixture `false-covered.md` carries three passages that look like answers and are not: one
 answering a neighbouring question, one four words long, and one opening "It holds for the
@@ -65,6 +65,47 @@ section never states a value and the reference points at nothing, so there is no
 extract — absent rather than not extractable. It also declined to treat the four-word sentence
 as covering how caching works.
 
-Reps 1 and 3 terminated on an account session limit, not on any skill behaviour. **One rep is
-not the majority of three the rule requires**, so item C stays open. Re-run both before calling
-the false-positive failure mode closed.
+Reps 1 and 3 terminated first time on an account session limit, not on any skill behaviour, and
+were re-run.
+
+| Rep | Cache duration | Four-word sentence | Criteria cited |
+|---|---|---|---|
+| 1 | ABSENT | not covering | criterion 5 |
+| 2 | ABSENT | not covering | criterion 2 |
+| 3 | ABSENT | not covering | criteria 2 and 3 |
+
+**Verdicts converged 3/3; criteria attribution did not.** Three reps reached the same
+conclusion by three different routes. The verdict is what the report acts on and what the
+reader fixes, so this passes — but criteria numbering is looser than the verdicts are, and the
+`fails:` line is less reliable than the classification above it. Worth knowing before treating
+a cited criterion number as precise.
+
+The false-positive failure mode does not reproduce. A section whose heading matches the
+sub-query, whose body points at a value stated nowhere, is correctly called ABSENT rather than
+COVERED.
+
+### Testing error worth recording
+
+Both retries reported their what-good-looks-like pair as composed rather than copied. That was
+not a skill failure: SKILL.md was edited after the installed copy was synced and before the
+retries were dispatched, so both read the pre-fix version. The copy rule was never under test
+in those runs. Re-synced and re-checked separately.
+
+The lesson is procedural — when a skill is installed to a second location, every dispatch after
+an edit tests whichever copy the agent actually reads, and nothing in the run output makes the
+staleness visible.
+
+## Copy rule → PASS (`wgll-copyrule-check.md`)
+
+Re-checked against a correctly synced skill:
+
+- present: yes
+- source: **copied verbatim** from `references/passage-criteria.md`
+- criterion: 3, matching the dominant failure in that report
+- invented: **none**
+
+The pair reproduced was the existing criterion 3 example — the unattributed bullet list, and
+its rewrite naming the entity per claim cluster. Nothing was composed, so nothing could be
+invented. That is the whole point of making the fix structural rather than a firmer
+instruction: the earlier wording told the model to be generic and it complied on a capable
+model and collapsed on a weaker one, whereas copying removes the generative step entirely.
