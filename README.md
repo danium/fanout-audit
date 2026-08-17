@@ -77,14 +77,26 @@ which is which.
 quickly than Search because it retrieves fewer documents, but the resulting quality is lower
 than Search's fully ranked web results" — lower, but good enough for grounding.
 
-**Not from the record.** Nothing disclosed describes passage- or chunk-level retrieval, or any
-preference for text that stands alone. That step is an inference: if a grounding pass works
-from a smaller and lower-quality candidate set, a passage carrying its own context is likelier
-to be usable than one that depends on its surroundings.
+**Observable, though not disclosed.** Links out of Google AI Overviews frequently carry a
+scroll-to-text fragment — a `#:~:text=` parameter pointing at a specific sentence on the
+destination page. You can check this yourself: open an AI Overview, inspect the outbound
+links. Whatever is happening internally, the product is pointing at individual passages rather
+than at pages. That is behaviour anyone can verify, not a claim about internals.
 
-So treat the standalone test as a defensible inference, not a documented mechanism. It is
-useful because passages that pass it are better writing for a reader arriving cold, which is
-true regardless of how any retrieval system works.
+**Not from the record.** Nothing disclosed describes how candidates are chunked or scored, or
+states any preference for text that stands alone. That step remains an inference: if a
+grounding pass works from a smaller and lower-quality candidate set, and if what comes back is
+pointed at sentence-level, then a passage carrying its own context is likelier to be usable
+than one that depends on its surroundings.
+
+So treat the standalone test as a defensible inference with an observable foot to stand on,
+not a documented mechanism. It is useful because passages that pass it are better writing for
+a reader arriving cold, which is true regardless of how any retrieval system works.
+
+**What this skill does not measure.** Whether a passage is *true*, *sourced*, or *deserves* to
+be cited. Extractability and credibility are independent axes — well-shaped content with no
+verifiable trail behind its claims gets retrieved perfectly well. A clean report here means
+your answers can be lifted, not that they should be trusted.
 
 Criteria 1, 2, 3, and 5 are gates. Criterion 4 is a length diagnostic — it never fails a
 passage on its own, it tells you which other criterion to check.

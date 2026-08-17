@@ -222,6 +222,59 @@ references, and states the consequence. Nothing outside it is required.
 
 ---
 
+### A completeness shape for criterion 5
+
+"Still answers the sub-query" is the vaguest of the five. When a passage is arguably complete
+and arguably not, check whether it carries three things:
+
+| Part | Question |
+|---|---|
+| Claim | What is being asserted? |
+| Evidence | What figure, mechanism, or example supports it? |
+| Qualification | Under what conditions does it hold, or stop holding? |
+
+A passage with the claim alone is the classic criterion 5 failure — it states a fact without
+explaining it, and a reader arriving cold learns that something is true without learning
+enough to use it. A passage with claim and evidence but no qualification usually reads as
+overclaiming once lifted away from the hedges in its neighbours.
+
+This is a diagnostic, not a gate. Plenty of good passages carry only claim and evidence, and a
+definitional passage may need nothing else. Use it when you are unsure whether to call
+criterion 5, not as a fourth thing to enforce.
+
+## When the passage is a table row
+
+The five criteria are written for prose, and applying them to prose is most of the job. But
+comparison data, pricing, specifications, and support matrices often live in tables, and the
+answer to a sub-query is sometimes a single row.
+
+**Apply the criteria to the row, not to the table.** A table is a container; the retrievable
+unit is smaller. The failure this exposes is specific and common:
+
+| Plan | Included sources | Retention |
+|---|---|---|
+| Starter | 3 | 30 days |
+| Growth | 10 | 12 months |
+
+Lifted alone, the row `Growth | 10 | 12 months` answers nothing. "10" and "12 months" are
+values whose attribute names sit in a header that did not travel with them, and no entity is
+named anywhere in the row. That is a **criterion 2** failure (unresolved reference — the header
+is the antecedent) and a **criterion 3** failure (entity implied, not named), recorded as
+those, not as a new criterion.
+
+Two fixes, and the second is usually better:
+
+- Restate the attribute inside each row, so a row reads as a fact rather than a value.
+- Put one prose sentence immediately above or below the table stating the comparison's
+  conclusion, naming the entity and the dimension compared. The table then carries the detail
+  and the sentence carries the answer.
+
+**Do not treat "this should be a table" as a finding.** Whether prose or markup extracts better
+is not something this skill knows, and recommending markup changes is the on-page SEO job the
+output contract excludes. The finding is always about whether the answer survives being lifted
+out — a table row that names its own attributes passes, and a paragraph that does the same
+passes equally.
+
 ## Recording a failure
 
 In the NOT EXTRACTABLE section, name the criterion by number and give one concrete
