@@ -19,11 +19,15 @@ can source, and hands the author decisions instead of paragraphs.
 
 ## What is actually disclosed
 
-Google has published roughly one sentence about query fan-out: AI Mode breaks a question
-into subtopics and issues many queries at once. The decomposition itself is disclosed
-nowhere — not in the antitrust record, not in Google's documentation.
+Google has published that AI Overviews and AI Mode "may use a 'query fan-out' technique —
+issuing multiple related searches across subtopics and data sources," and that Deep Search
+"can issue hundreds of searches." The decomposition itself — which sub-queries get issued and
+how they are chosen — is disclosed nowhere: not in the antitrust record, not in the
+documentation.
 
 So the sub-queries you generate are **your simulation**. Google's fan-out is unknown to you.
+A Google-published number, quoted with attribution, is fine; a number nobody published is
+not.
 
 Three things follow, and they hold for every report you write:
 

@@ -10,9 +10,12 @@ nothing, and writes no copy for you.
 ## The caveat, up front
 
 fanout-audit simulates a plausible query decomposition rather than reproducing Google's,
-because Google's decomposition is disclosed nowhere — not in the trial record, not in Google's
-documentation. What Google has published is roughly one sentence: AI Mode breaks a question
-into subtopics and issues many queries at once.
+because the decomposition itself — which sub-queries get issued for a given question, and how
+they are chosen — is disclosed nowhere. What Google has published has grown from one sentence
+to a few: Search Central now documents that both AI Overviews and AI Mode "may use a 'query
+fan-out' technique — issuing multiple related searches across subtopics and data sources,"
+and Google states that Deep Search "can issue hundreds of searches." None of that reveals the
+decomposition.
 
 Every report fanout-audit produces opens by saying so, because a tool that quietly implies it
 knows Google's fan-out is the exact failure it exists to argue against.
@@ -110,11 +113,14 @@ which is which.
 quickly than Search because it retrieves fewer documents, but the resulting quality is lower
 than Search's fully ranked web results" — lower, but good enough for grounding.
 
-**Observable, though not disclosed.** Links out of Google AI Overviews frequently carry a
-scroll-to-text fragment — a `#:~:text=` parameter pointing at a specific sentence on the
-destination page. You can check this yourself: open an AI Overview, inspect the outbound
-links. Whatever is happening internally, the product is pointing at individual passages rather
-than at pages. That is behaviour anyone can verify, not a claim about internals.
+**Observable, though not disclosed.** Links out of Google AI Overviews have carried
+scroll-to-text fragments — a `#:~:text=` parameter pointing at a specific sentence on the
+destination page. Two honesty notes on that. The fragment syntax is Chrome's generic
+text-fragment feature, in browsers since 2020, so its presence shows the product pointing at
+individual passages — it is not an AI-specific mechanism. And product behaviour changes
+without notice, so check current Overview links yourself before leaning on this; the
+observation holds only as long as it reproduces. When present, it is behaviour anyone can
+verify, not a claim about internals.
 
 **Not from the record.** Nothing disclosed describes how candidates are chunked or scored, or
 states any preference for text that stands alone. That step remains an inference: if a
@@ -190,23 +196,42 @@ failing grade on a post whose only problem is where its sentences start.
 
 This skill accompanies [an article by Daniil Sokolov](https://x.com/daniilsokolov/status/2088613085162483785).
 
-Two disclosed facts sit under this skill, and it is worth being exact about both, since the
-skill's own rule is that a claim you cannot point at a source for does not get written down.
+The disclosed facts under this skill are worth being exact about, since the skill's own rule
+is that a claim you cannot point at a source for does not get written down.
 
 **Query fan-out**, in Google's own words, announcing AI Mode in May 2025: "Under the hood, AI
 Mode uses our query fan-out technique, breaking down your question into subtopics and issuing
 a multitude of queries simultaneously on your behalf."
 ([blog.google](https://blog.google/products-and-platforms/products/search/ai-mode-search/))
 
+**Search Central documentation** now states it for both surfaces: "Both AI Overviews and AI
+Mode may use a 'query fan-out' technique — issuing multiple related searches across subtopics
+and data sources."
+([developers.google.com](https://developers.google.com/search/docs/appearance/ai-features))
+"Data sources" is worth noticing: fan-out is not described as web-only.
+
+**Deep Search**, per Google's own announcement, "can issue hundreds of searches" for a complex
+question. That is a Google-published number, quotable with attribution — the no-invented-
+numbers rule bans numbers nobody published, not numbers Google did.
+([blog.google](https://blog.google/products/search/deep-search-business-calling-google-search/))
+
 **FastSearch**, from the DOJ v. Google filing: it "delivers results more quickly than Search
 because it retrieves fewer documents, but the resulting quality is lower than Search's fully
 ranked web results," and is "based on RankEmbed signals." Reported during the 2025 remedies
 trial. ([Search Engine Land](https://searchengineland.com/google-fastsearch-464557))
 
-That is the whole disclosed surface. The actual fan-out decomposition, how many sub-queries
-are issued, how candidates are chunked or scored, and whether standalone text is favoured are
-all **undisclosed**. Where this skill goes beyond the two quotes above it is inferring, and it
-says so rather than borrowing their authority.
+**Per-request outputs are partially observable.** Gemini API grounding responses return
+`groundingMetadata.webSearchQueries` — "an array of the search queries used" for that request
+([ai.google.dev](https://ai.google.dev/gemini-api/docs/generate-content/google-search)). That
+is first-party output for one request on one surface, not the algorithm; it tells you what was
+asked that time, not how the decomposition is produced.
+
+What remains **undisclosed** is the part this skill simulates: how the decomposition is
+chosen, how candidates are chunked or scored, and whether standalone text is favoured. Where
+this skill goes beyond the sourced statements above it is inferring, and it says so rather
+than borrowing their authority. If you have real observed queries — from an API's grounding
+metadata or an analytics surface that exposes them — auditing against those beats any
+simulation, and you should prefer them.
 
 ## Licence
 
