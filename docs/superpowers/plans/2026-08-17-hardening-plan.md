@@ -108,7 +108,16 @@ fixtures.
 
 **Effort:** small.
 
-### E. A wrong-but-unambiguous head query is unguarded
+### E. A wrong-but-unambiguous head query is unguarded — DONE for the named path
+
+Resolved 2026-08-19 via user-named head queries: step 2 now audits a user-named head query
+verbatim, without re-inferring, and the named query suppresses the two-head-query stop.
+Verified against the two-intent fixture whose documented behaviour was stop-and-ask. This also
+enables category-vs-brand audits, which inference alone could never produce. The inferred path
+keeps its existing guard (stated back before proceeding). Record in
+`tests/results/external-review-round.md`. Original reasoning below.
+
+
 
 Step 2 stops when content targets *two* head queries. It has no guard for confidently inferring
 *one* head query incorrectly — quieter and worse, because no ambiguity signal fires and every
@@ -213,6 +222,13 @@ Recorded so these stay decided:
   skill still does not fetch on its own.
 - **No numbers imported from practitioner sources** about undisclosed mechanisms, however
   confidently those sources state them.
+- **No unique-claim / corroboration flag on COVERED items.** "Likely corroborated" is a guess
+  about the rest of the web with nothing behind it; contradiction across owned surfaces is
+  already Module B's job. (Proposed by an external review, rejected 2026-08-19.)
+- **No transformation layer on simulated queries** (paraphrase/specification/follow-up
+  variants). The premise is unverified third-party patent inference, it risks padding, and
+  observed-query mode obsoletes it — real queries contain their own transforms. Open question
+  pending calibration evidence, not a feature.
 
 ---
 

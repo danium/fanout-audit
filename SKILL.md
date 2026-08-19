@@ -59,9 +59,17 @@ Bracketing digits does not satisfy this. `[$X]/month` wrapped in "billed on tran
 volume, not per seat, so adding reviewers does not change the price" still ships an invented
 billing model — the brackets moved the number and left the fabrication in place.
 
-When a sub-query is **absent**, describe what a passage would need to contain. Do not draft
-the passage. "This needs a sentence giving the billing basis and what a plan includes" is
-the deliverable. A written pricing paragraph is not, however carefully hedged.
+When a sub-query is **absent** and the user has not supplied the missing facts, describe what
+a passage would need to contain. Do not draft it. "This needs a sentence giving the billing
+basis and what a plan includes" is the deliverable. A written pricing paragraph is not,
+however carefully hedged.
+
+**If the user supplies the facts, drafting is permitted — from those facts only.** The rule
+above already allows claims traceable to something the user told you in this conversation.
+"Here are the prices, write the passage" is a legitimate request: shape their facts into a
+passage that passes the standalone test, and put nothing in it they did not supply. The line
+that cannot be crossed is unchanged — no fact enters a draft that traces to neither the source
+content nor the user.
 
 The harm here is specific: a fluent invented sentence about the user's own product is easy
 to paste without checking, and it is the user's name on it afterwards.
@@ -88,19 +96,36 @@ was never on the page:
 When you cannot verify you have the whole text, say so and audit what you have, explicitly
 scoped. Never report ABSENT for a section you could not read.
 
-### 2. Infer the head query
+### 2. Establish the head query
 
-One sentence. State it back to the user before going further.
+**If the user named a head query, audit against it verbatim.** Do not re-infer it, broaden it,
+or substitute the page's own framing — the named query wins even when the page seems to target
+something else, because auditing a brand page against a category query is a legitimate request
+only the user can make. State it back as given, then proceed.
 
-**If the content targets more than one head query, stop. Ask which one to audit. Do not
-audit both, and do not pick the likelier one.** Naming the ambiguity in a report you deliver
-anyway is not asking — the report does not begin until the user has answered. Auditing
-against the wrong head query produces gaps that are confidently wrong, and a page serving
-two intents is the single most common case where that happens.
+Otherwise infer it: one sentence, stated back to the user before going further.
 
-### 3. Generate sub-queries
+**If you inferred it, and the content targets more than one head query, stop. Ask which one to
+audit. Do not audit both, and do not pick the likelier one.** Naming the ambiguity in a report
+you deliver anyway is not asking — the report does not begin until the user has answered.
+Auditing against the wrong head query produces gaps that are confidently wrong, and a page
+serving two intents is the single most common case where that happens. A user-named head query
+already answers this question, so the stop applies only to inferred ones.
 
-Six to twelve, from the nine intent classes in `references/subquery-taxonomy.md`.
+### 3. Generate sub-queries — or take the user's observed ones
+
+**If the user supplied real queries** — from an API's grounding metadata, an analytics surface
+that exposes them, or their own logs — audit those queries and generate nothing. Skip the gates
+and both stops below: the supplied list defines the audit's scope, and a supplied query the
+page cannot answer is exactly the finding. Use the observed-queries header line from the
+output contract instead of the simulation line. Everything else — the standalone test, the
+three states, the sourced-claims rule — is unchanged.
+
+Observed queries beat simulation whenever they exist. Simulation is the fallback for users
+with nothing to paste, not the preferred path.
+
+Otherwise, generate: six to twelve, from the nine intent classes in
+`references/subquery-taxonomy.md`.
 
 Each class carries a gate question. **A class contributes sub-queries only if its gate opens.**
 Gates open on what the subject is and on what the page claims; a gate never closes because the
@@ -189,6 +214,12 @@ WHAT GOOD LOOKS LIKE            ← include only if NOT EXTRACTABLE is greater t
     after:  [the passing example for that criterion, copied from passage-criteria.md]
 ```
 
+**When auditing observed queries the user supplied, the required first line is instead,
+copied exactly:**
+
+> Sub-queries below are observed queries supplied by the user, not a simulated decomposition.
+> Treat coverage gaps as a content completeness signal, not as a ranking prediction.
+
 The order is deliberate. Covered first gives the author something before the criticism. Not
 extractable comes before absent because those are the cheap fixes — the answer already
 exists and needs moving, not writing.
@@ -256,7 +287,7 @@ best.
 
 Any of these means stop and re-read the section above it:
 
-- About to write a passage for an ABSENT sub-query
+- About to write a passage for an ABSENT sub-query from facts the user did not supply
 - About to state how retrieval, chunking, or ranking works as established fact
 - About to attach a number to something Google has not disclosed
 - Reaching for a score, a percentage, or a priority table
